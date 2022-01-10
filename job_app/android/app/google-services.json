@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "872354820601",
-    "project_id": "job-app-samir",
-    "storage_bucket": "job-app-samir.appspot.com"
+    "project_number": "329494136510",
+    "project_id": "linkedin-clone-de567",
+    "storage_bucket": "linkedin-clone-de567.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:872354820601:android:6a1986cca0e14535800d28",
+        "mobilesdk_app_id": "1:329494136510:android:6a1e5a01a04d16491a80ef",
         "android_client_info": {
-          "package_name": "com.example.job_app"
+          "package_name": "com.project.linkedin_clone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "872354820601-pss5onmm53f45u900g2h0a4ckgrigjrl.apps.googleusercontent.com",
+          "client_id": "329494136510-9639rf6f3pij50ggn50inp0oj6gg5u3j.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCKZBDxxuL7lbMQBKcw-QnlyhZzZ_mbJBI"
+          "current_key": "AIzaSyAw4kkVtwHMelUXkkAMEDTv-eOfm-ymWYk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "872354820601-pss5onmm53f45u900g2h0a4ckgrigjrl.apps.googleusercontent.com",
+              "client_id": "329494136510-9639rf6f3pij50ggn50inp0oj6gg5u3j.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

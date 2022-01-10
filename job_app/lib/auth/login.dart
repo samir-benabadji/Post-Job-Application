@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:job_app/auth/forget_pass.dart';
-import 'package:job_app/auth/register.dart';
-import 'package:job_app/services/global_methods.dart';
-import 'package:job_app/services/global_variables.dart';
+import 'package:linkedin_clone/auth/forget_pass.dart';
+import 'package:linkedin_clone/auth/register.dart';
+import 'package:linkedin_clone/services/global_methods.dart';
+import 'package:linkedin_clone/services/global_variables.dart';
 
  class Login extends StatefulWidget {
    const Login({Key? key}) : super(key: key);

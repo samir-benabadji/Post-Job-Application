@@ -8,8 +8,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:job_app/services/global_methods.dart';
-import 'package:job_app/services/global_variables.dart';
+import 'package:linkedin_clone/services/global_methods.dart';
+import 'package:linkedin_clone/services/global_variables.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
