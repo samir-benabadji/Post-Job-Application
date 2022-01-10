@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:job_app/auth/register.dart';
 import 'package:job_app/user_state.dart';
 
 void main() {
