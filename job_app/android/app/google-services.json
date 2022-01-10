@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "872354820601",
+    "project_id": "job-app-samir",
+    "storage_bucket": "job-app-samir.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872354820601:android:6a1986cca0e14535800d28",
+        "android_client_info": {
+          "package_name": "com.example.job_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872354820601-pss5onmm53f45u900g2h0a4ckgrigjrl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKZBDxxuL7lbMQBKcw-QnlyhZzZ_mbJBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872354820601-pss5onmm53f45u900g2h0a4ckgrigjrl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
