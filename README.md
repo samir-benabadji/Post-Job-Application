@@ -6,9 +6,9 @@ Linkedin_Clone app
 
 | Home | Admin | Job Menu | Log In & Sign In |
 |--|--|--|--|
-| ![Home](job_app\assets\images\3.png) | ![Admin](job_app\assets\images\12.png) | ![Job Menu](job_app\assets\images\6.png) |![Log In & Sign In](job_app\assets\images\1.png) |
+| ![Home](job_app\assets\images\3.jpg) | ![Admin](job_app\assets\images\12.jpg) | ![Job Menu](job_app\assets\images\6.jpg) |![Log In & Sign In](job_app\assets\images\1.jpg) |
 | Login | Splash | Profile | TimeTable |
-| ![Login](assets\images\10.png) | ![Splash](assets\images\9.png) | ![Profile](assets\images\7.png) |![TimeTable](assets\images\5.png) |
+| ![Login](assets\images\10.jpg) | ![Splash](assets\images\9.jpg) | ![Profile](assets\images\7.jpg) |![TimeTable](assets\images\5.jpg) |
 
 
 
