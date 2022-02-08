@@ -1,16 +1,17 @@
 # linkedin_clone
 
-A new Flutter project.
+Linkedin_Clone app
 
-## Getting Started
+## Android Mobile Application Screenshot
 
-This project is a starting point for a Flutter application.
+| Home | Admin | Job Menu | Log In & Sign In |
+|--|--|--|--|
+| ![Home](job_app\assets\images\3.png) | ![Admin](job_app\assets\images\12.png) | ![Job Menu](job_app\assets\images\6.png) |![Log In & Sign In](job_app\assets\images\1.png) |
+| Login | Splash | Profile | TimeTable |
+| ![Login](Screenshots/login.jpg) | ![Splash](Screenshots/splash.jpg) | ![Profile](Screenshots/profile.jpg) |![TimeTable](Screenshots/timetable.jpg) |
+| Home Work | Documents | Attendance | Exams |
+| ![Home](Screenshots/home_work.jpg) | ![Documents](Screenshots/documents.jpg) | ![Attendance](Screenshots/attendance.jpg) |![Exams](Screenshots/exams.jpg) |
+| Notification | Subject List | Teacher List | Settings |
+| ![Notification](Screenshots/notification.jpg) | ![Subject List](Screenshots/subject_list.jpg) | ![Teacher List](Screenshots/teacher_list.jpg) |![Settings](Screenshots/settings.jpg) |
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
