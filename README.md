@@ -1,9 +1,7 @@
-# linkedin_clone
+# Post Job Application
 
-A new Flutter project.
-
-| Home | Admin | Job Menu | Log In & Sign In |
+| Home | Job Menu | Log In | Sign In |
 |--|--|--|--|
-| ![Home](assets/images/3.jpg) | ![Admin](assets/images/12.jpg) | ![Job Menu](assets/images/6.jpg) |![Log In & Sign In](assets/images/1.jpg) |
-| Login | Splash | Profile | TimeTable |
-| ![Login](assets/images/10.jpg) | ![Splash](assets/images/9.jpg) | ![Profile](assets/images/7.jpg) |![TimeTable](assets/images/5.jpg) |
+| ![Home](assets/images/Screenshot_1647798524.png) | ![Job Menu](assets/images/Screenshot_1647798548.png) | ![Log In](assets/images/Screenshot_1647798841.png) |![Sign In](assets/images/Screenshot_1647798856.png) |
+| Job Category | Create Comment | Job Detail | Log Out |
+| ![Job Category](assets/images/Screenshot_1647798795.png) | ![Create Comment](assets/images/Screenshot_1647798738.png) | ![Job Detail](assets/images/Screenshot_1647798724.png) |![Log Out](assets/images/Screenshot_1647798554.png) |
