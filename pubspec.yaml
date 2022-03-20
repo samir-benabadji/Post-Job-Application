@@ -1,5 +1,5 @@
 name: linkedin_clone
-description: An App with different jobs
+description: Fully Functional Post Job Application With Firebase as back-end
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
