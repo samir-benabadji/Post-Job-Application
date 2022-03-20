@@ -171,7 +171,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                                 _obscureText
                                     ? Icons.visibility
                                     : Icons.visibility_off,
-                                color: Colors.white,
+                                color: Color(0xff044404),
                               ),
                             ),
                             hintText: 'Password',
@@ -215,7 +215,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                         ),
                         MaterialButton(
                           onPressed: _submitFormOnLogin,
-                          color: Colors.blue,
+                          color: Color(0xff044404),
                           elevation: 8,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(13)),
@@ -259,7 +259,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                                             builder: (context) => SignUp())),
                                   text: 'Register here',
                                   style: TextStyle(
-                                      color: Colors.blue,
+                                      color: Color(0xff044404),
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16),
                                 ),

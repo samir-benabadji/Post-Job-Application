@@ -8,7 +8,6 @@ import 'package:linkedin_clone/jobs/job_details.dart';
 import 'package:linkedin_clone/services/global_methods.dart';
 
 class JobWidget extends StatefulWidget {
-
   final String jobTitle;
   final String jobDescription;
   final String jobId;
@@ -18,7 +17,6 @@ class JobWidget extends StatefulWidget {
   final bool recruitment;
   final String email;
   final String location;
-
 
   const JobWidget({
     required this.jobTitle,
@@ -31,7 +29,6 @@ class JobWidget extends StatefulWidget {
     required this.email,
     required this.location,
   });
-
 
   @override
   _JobWidgetState createState() => _JobWidgetState();
@@ -46,11 +43,14 @@ class _JobWidgetState extends State<JobWidget> {
       elevation: 8,
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       child: ListTile(
-        onTap: (){
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => JobDetailsScreen(
-            uploadedBy: widget.uploadedBy,
-            jobID: widget.jobId,
-          )));
+        onTap: () {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => JobDetailsScreen(
+                        uploadedBy: widget.uploadedBy,
+                        jobID: widget.jobId,
+                      )));
         },
         onLongPress: _deleteDialog,
         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -72,7 +72,6 @@ class _JobWidgetState extends State<JobWidget> {
             color: Colors.white,
           ),
         ),
-
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -87,7 +86,9 @@ class _JobWidgetState extends State<JobWidget> {
                 color: Colors.grey,
               ),
             ),
-            SizedBox(height: 8,),
+            SizedBox(
+              height: 8,
+            ),
             Text(
               widget.jobDescription,
               maxLines: 4,
@@ -107,34 +108,38 @@ class _JobWidgetState extends State<JobWidget> {
       ),
     );
   }
-  _deleteDialog(){
+
+  _deleteDialog() {
     User? user = _auth.currentUser;
     final _uid = user!.uid;
     showDialog(
         context: context,
-        builder: (ctx){
+        builder: (ctx) {
           return AlertDialog(
             actions: [
               TextButton(
-                onPressed: ()async{
-                  try{
-                    if(widget.uploadedBy == _uid){
-                      await FirebaseFirestore.instance.collection('jobs').doc(widget.jobId).delete();
+                onPressed: () async {
+                  try {
+                    if (widget.uploadedBy == _uid) {
+                      await FirebaseFirestore.instance
+                          .collection('jobs')
+                          .doc(widget.jobId)
+                          .delete();
                       await Fluttertoast.showToast(
-                        msg:  "Job has been deleted",
+                        msg: "Job has been deleted",
                         toastLength: Toast.LENGTH_LONG,
                         backgroundColor: Colors.grey,
                         fontSize: 18.0,
                       );
-                      Navigator.canPop(ctx) ? Navigator.pop(ctx) : null ;
+                      Navigator.canPop(ctx) ? Navigator.pop(ctx) : null;
+                    } else {
+                      GlobalMethod.showErrorDialog(
+                          error: "you cannot perform this action", ctx: ctx);
                     }
-                    else{
-                      GlobalMethod.showErrorDialog(error:  "you cannot perform this action", ctx: ctx);
-                    }
-                  }
-                  catch(error){
-                    GlobalMethod.showErrorDialog(error: 'this task can\'t be deleted', ctx: context);
-                  } finally{}
+                  } catch (error) {
+                    GlobalMethod.showErrorDialog(
+                        error: 'this task can\'t be deleted', ctx: context);
+                  } finally {}
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -145,14 +150,13 @@ class _JobWidgetState extends State<JobWidget> {
                     ),
                     Text(
                       'Delete',
-                      style: TextStyle(color:  Colors.red),
+                      style: TextStyle(color: Colors.red),
                     )
                   ],
                 ),
               ),
             ],
           );
-        }
-    );
+        });
   }
 }

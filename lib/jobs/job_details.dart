@@ -19,7 +19,6 @@ class JobDetailsScreen extends StatefulWidget {
 }
 
 class _JobDetailsScreenState extends State<JobDetailsScreen> {
-
   TextEditingController _commentController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   bool _isCommenting = false;
@@ -45,11 +44,12 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
     getJobData();
   }
 
-  applyForJob(){
+  applyForJob() {
     final Uri params = Uri(
       scheme: 'mailto',
       path: emailCompany,
-      query: 'subject=Applying for $jobTitle&body=Hello, please attach Resume CV file',
+      query:
+          'subject=Applying for $jobTitle&body=Hello, please attach Resume CV file',
     );
     final url = params.toString();
     launch(url);
@@ -57,7 +57,8 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
   }
 
   void addNewApplicant() async {
-    var docRef = FirebaseFirestore.instance.collection('jobs').doc(widget.jobID);
+    var docRef =
+        FirebaseFirestore.instance.collection('jobs').doc(widget.jobID);
 
     docRef.update({
       "applicants": applicants + 1,
@@ -67,20 +68,26 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
   }
 
   void getJobData() async {
-    final DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('users').doc(widget.uploadedBy).get();
+    final DocumentSnapshot userDoc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(widget.uploadedBy)
+        .get();
 
-    if(userDoc == null){
+    if (userDoc == null) {
       return;
-    }else{
+    } else {
       setState(() {
         authorName = userDoc.get('name');
         userImageUrl = userDoc.get('userImage');
       });
     }
-    final DocumentSnapshot jobDatabase = await FirebaseFirestore.instance.collection('jobs').doc(widget.jobID).get();
-    if(jobDatabase == null){
+    final DocumentSnapshot jobDatabase = await FirebaseFirestore.instance
+        .collection('jobs')
+        .doc(widget.jobID)
+        .get();
+    if (jobDatabase == null) {
       return;
-    } else{
+    } else {
       setState(() {
         jobTitle = jobDatabase.get('jobTitle');
         jobDescription = jobDatabase.get('jobDescription');
@@ -107,34 +114,33 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         leading: IconButton(
             icon: Icon(Icons.close, size: 40, color: Colors.grey),
-          onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => JobScreen()));
-          }
-        ),
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => JobScreen()));
+            }),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-                padding: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(4.0),
               child: Card(
-                color: Colors.white38,
+                color: Color(0xff044404),
                 child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                          padding: const EdgeInsets.only(left: 4),
+                        padding: const EdgeInsets.only(left: 4),
                         child: Text(
                           jobTitle == null ? '' : jobTitle!,
                           maxLines: 3,
                           style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30
-                          ),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30),
                         ),
                       ),
                       SizedBox(
@@ -149,29 +155,33 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                             decoration: BoxDecoration(
                               border: Border.all(
                                 width: 3,
-                                color: Colors.grey,
+                                color: Colors.black,
                               ),
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                image: NetworkImage(
-                                  userImageUrl == null
-                                      ? 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png'
-                                      : userImageUrl!,
-                                ),
-                                fit: BoxFit.fill
-                              ),
+                                  image: NetworkImage(
+                                    userImageUrl == null
+                                        ? 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png'
+                                        : userImageUrl!,
+                                  ),
+                                  fit: BoxFit.fill),
                             ),
                           ),
                           Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
+                            padding: const EdgeInsets.only(left: 10.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   authorName == null ? '' : authorName!,
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Colors.white),
                                 ),
-                                SizedBox(height: 5,),
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Text(
                                   locationCompany,
                                   style: TextStyle(color: Colors.grey),
@@ -181,138 +191,149 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                           ),
                         ],
                       ),
-
                       dividerWidget(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             applicants.toString(),
-                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
                           ),
-                          SizedBox(width: 6,),
+                          SizedBox(
+                            width: 6,
+                          ),
                           Text(
                             'Applicants',
-                            style: TextStyle(color: Colors.grey,),
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
                           ),
-                          SizedBox(width: 10,),
+                          SizedBox(
+                            width: 10,
+                          ),
                           Icon(
                             Icons.how_to_reg_sharp,
                             color: Colors.grey,
                           ),
                         ],
                       ),
-
-                      FirebaseAuth.instance.currentUser!.uid != widget.uploadedBy ? Container() :
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              dividerWidget(),
-                              Text(
-                                'Recruitment:',
-                                style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  TextButton(
-                                      onPressed: (){
+                      FirebaseAuth.instance.currentUser!.uid !=
+                              widget.uploadedBy
+                          ? Container()
+                          : Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                dividerWidget(),
+                                Text(
+                                  'Recruitment:',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {
                                         User? user = _auth.currentUser;
                                         final _uid = user!.uid;
-                                        if(_uid == widget.uploadedBy) {
+                                        if (_uid == widget.uploadedBy) {
                                           try {
                                             FirebaseFirestore.instance
-                                                .collection('jobs').doc(
-                                                widget.jobID).update(
-                                                {'recruitment': true});
+                                                .collection('jobs')
+                                                .doc(widget.jobID)
+                                                .update({'recruitment': true});
                                           } catch (err) {
                                             GlobalMethod.showErrorDialog(
-                                                error: 'Action cant be performed',
-                                                ctx: context
-                                            );
+                                                error:
+                                                    'Action cant be performed',
+                                                ctx: context);
                                           }
-                                        }else{
+                                        } else {
                                           GlobalMethod.showErrorDialog(
-                                              error: 'You cant perform this action',
-                                              ctx: context
-                                          );
+                                              error:
+                                                  'You cant perform this action',
+                                              ctx: context);
                                         }
-                                          getJobData();
+                                        getJobData();
                                       },
-                                    child: Text(
-                                      'ON',
-                                      style: TextStyle(
-                                        fontStyle: FontStyle.italic,
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal
+                                      child: Text(
+                                        'ON',
+                                        style: TextStyle(
+                                            fontStyle: FontStyle.italic,
+                                            color: Colors.black,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.normal),
                                       ),
                                     ),
-                                  ),
-                                  Opacity(
+                                    Opacity(
                                       opacity: recruitment == true ? 1 : 0,
-                                    child: Icon(
-                                      Icons.check_box,
-                                      color: Colors.green,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 40,
-                                  ),
-                                  TextButton(
-                                    onPressed: (){
-                                      User? user = _auth.currentUser;
-                                      final _uid = user!.uid;
-                                      if(_uid == widget.uploadedBy) {
-                                        try {
-                                          FirebaseFirestore.instance
-                                              .collection('jobs').doc(
-                                              widget.jobID).update(
-                                              {'recruitment': false});
-                                        } catch (err) {
-                                          GlobalMethod.showErrorDialog(
-                                              error: 'Action cant be performed',
-                                              ctx: context
-                                          );
-                                        }
-                                      }else{
-                                        GlobalMethod.showErrorDialog(
-                                            error: 'You cant perform this action',
-                                            ctx: context
-                                        );
-                                      }
-                                      getJobData();
-                                    },
-                                    child: Text(
-                                      'OFF',
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.italic,
-                                          color: Colors.black,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.normal
+                                      child: Icon(
+                                        Icons.check_box,
+                                        color: Colors.green,
                                       ),
                                     ),
-                                  ),
-                                  Opacity(
-                                    opacity: recruitment == false ? 1 : 0,
-                                    child: Icon(
-                                      Icons.check_box,
-                                      color: Colors.red,
+                                    SizedBox(
+                                      width: 40,
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-
+                                    TextButton(
+                                      onPressed: () {
+                                        User? user = _auth.currentUser;
+                                        final _uid = user!.uid;
+                                        if (_uid == widget.uploadedBy) {
+                                          try {
+                                            FirebaseFirestore.instance
+                                                .collection('jobs')
+                                                .doc(widget.jobID)
+                                                .update({'recruitment': false});
+                                          } catch (err) {
+                                            GlobalMethod.showErrorDialog(
+                                                error:
+                                                    'Action cant be performed',
+                                                ctx: context);
+                                          }
+                                        } else {
+                                          GlobalMethod.showErrorDialog(
+                                              error:
+                                                  'You cant perform this action',
+                                              ctx: context);
+                                        }
+                                        getJobData();
+                                      },
+                                      child: Text(
+                                        'OFF',
+                                        style: TextStyle(
+                                            fontStyle: FontStyle.italic,
+                                            color: Colors.black,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                    ),
+                                    Opacity(
+                                      opacity: recruitment == false ? 1 : 0,
+                                      child: Icon(
+                                        Icons.check_box,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                       dividerWidget(),
                       Text(
                         'Job Description:',
-                        style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 10,
@@ -320,7 +341,10 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                       Text(
                         jobDescription == null ? '' : jobDescription!,
                         textAlign: TextAlign.justify,
-                        style: TextStyle(fontSize: 14, color: Colors.grey,),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                        ),
                       ),
                       dividerWidget(),
                     ],
@@ -329,27 +353,28 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(4.0),
               child: Card(
-                color: Colors.white38,
+                color: Color(0xff044404),
                 child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Center(
                         child: Text(
                           isDeadlineAvailable
-                          ? 'Actively Recruiting, Send CV/Resume:'
+                              ? 'Actively Recruiting, Send CV/Resume:'
                               : ' Deadline Passed away.',
                           style: TextStyle(
-                            color: isDeadlineAvailable
-                                ? Colors.green
-                                : Colors.red,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 16
-                          ),
+                              color: isDeadlineAvailable
+                                  ? Colors.green
+                                  : Colors.red,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 16),
                         ),
                       ),
                       SizedBox(
@@ -357,23 +382,21 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                       ),
                       Center(
                         child: MaterialButton(
-                            onPressed: (){
-                              applyForJob();
-                            },
-                          color: Colors.blueAccent,
+                          onPressed: () {
+                            applyForJob();
+                          },
+                          color: Colors.black,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(13)
-                          ),
+                              borderRadius: BorderRadius.circular(13)),
                           child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 14),
+                            padding: const EdgeInsets.symmetric(vertical: 14),
                             child: Text(
                               'Easy Apply Now',
                               style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14
-                              ),
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14),
                             ),
                           ),
                         ),
@@ -389,10 +412,9 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                           Text(
                             postedDate == null ? '' : postedDate!,
                             style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15
-                            ),
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
                           )
                         ],
                       ),
@@ -411,8 +433,7 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                             style: TextStyle(
                                 color: Colors.grey,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 15
-                            ),
+                                fontSize: 15),
                           )
                         ],
                       ),
@@ -422,203 +443,230 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                 ),
               ),
             ),
-
             Padding(
-                padding: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(4.0),
               child: Card(
-                color: Colors.white38,
+                color: Color(0xff044404),
                 child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AnimatedSwitcher(
-                          duration: Duration(
-                            milliseconds: 500,
-                          ),
+                        duration: Duration(
+                          milliseconds: 500,
+                        ),
                         child: _isCommenting
-                            ?
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Flexible(
-                                  flex: 3,
+                            ? Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Flexible(
+                                    flex: 3,
                                     child: TextField(
                                       controller: _commentController,
-                                      style: TextStyle(color: Colors.white,),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
                                       maxLength: 200,
                                       keyboardType: TextInputType.text,
                                       maxLines: 6,
                                       decoration: InputDecoration(
                                         filled: true,
-                                        fillColor: Theme.of(context).scaffoldBackgroundColor,
+                                        fillColor: Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide:
-                                            BorderSide(color: Colors.white),
+                                              BorderSide(color: Colors.white),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderSide:
-                                            BorderSide(color: Colors.pink),
+                                              BorderSide(color: Colors.pink),
                                         ),
                                       ),
                                     ),
-                                ),
-                                Flexible(
+                                  ),
+                                  Flexible(
                                     child: Column(
                                       children: [
                                         Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8),
                                           child: MaterialButton(
-                                              onPressed: () async {
-                                                if(_commentController.text.length < 7){
-                                                  GlobalMethod.showErrorDialog(
-                                                      error:
-                                                      'Comment cant be less than 7 characters',
-                                                      ctx: context
-                                                  );
-                                                }else{
-                                                  final _generatedId = Uuid().v4();
-                                                  await FirebaseFirestore.instance
-                                                  .collection('jobs')
-                                                  .doc(widget.jobID)
-                                                  .update({
-                                                    'jobComments':
-                                                        FieldValue.arrayUnion([
-                                                          {
-                                                            'userId' : FirebaseAuth.instance.currentUser!.uid,
-                                                            'commentId' : _generatedId,
-                                                            'name' : name,
-                                                            'userImageUrl' : userImage,
-                                                            'commentBody' : _commentController.text,
-                                                            'time' : Timestamp.now(),
-                                                          }
-                                                        ]),
-                                                  });
-                                                  await Fluttertoast.showToast(
-                                                      msg:
-                                                      "Your comment has been added",
-                                                    toastLength: Toast.LENGTH_LONG,
-                                                    backgroundColor: Colors.grey,
-                                                    fontSize: 18.0
-                                                  );
-                                                  _commentController.clear();
-                                                }
-                                                setState(() {
-                                                  showComment = true;
+                                            onPressed: () async {
+                                              if (_commentController
+                                                      .text.length <
+                                                  7) {
+                                                GlobalMethod.showErrorDialog(
+                                                    error:
+                                                        'Comment cant be less than 7 characters',
+                                                    ctx: context);
+                                              } else {
+                                                final _generatedId =
+                                                    Uuid().v4();
+                                                await FirebaseFirestore.instance
+                                                    .collection('jobs')
+                                                    .doc(widget.jobID)
+                                                    .update({
+                                                  'jobComments':
+                                                      FieldValue.arrayUnion([
+                                                    {
+                                                      'userId': FirebaseAuth
+                                                          .instance
+                                                          .currentUser!
+                                                          .uid,
+                                                      'commentId': _generatedId,
+                                                      'name': name,
+                                                      'userImageUrl': userImage,
+                                                      'commentBody':
+                                                          _commentController
+                                                              .text,
+                                                      'time': Timestamp.now(),
+                                                    }
+                                                  ]),
                                                 });
-                                              },
-                                            color: Colors.blueAccent,
+                                                await Fluttertoast.showToast(
+                                                    msg:
+                                                        "Your comment has been added",
+                                                    toastLength:
+                                                        Toast.LENGTH_LONG,
+                                                    backgroundColor:
+                                                        Colors.grey,
+                                                    fontSize: 18.0);
+                                                _commentController.clear();
+                                              }
+                                              setState(() {
+                                                showComment = true;
+                                              });
+                                            },
+                                            color: Colors.black,
                                             elevation: 0,
                                             shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(8)
-                                            ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8)),
                                             child: Text(
                                               'Post',
                                               style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14
-                                              ),
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14),
                                             ),
                                           ),
                                         ),
                                         TextButton(
-                                            onPressed: (){
+                                            onPressed: () {
                                               setState(() {
                                                 _isCommenting = !_isCommenting;
                                                 showComment = false;
                                               });
                                             },
-                                            child: Text('Cancel')
-                                        ),
+                                            child: Text(
+                                              'Cancel',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            )),
                                       ],
-                                    ) ,
-                                ),
-                              ],
-                            )
+                                    ),
+                                  ),
+                                ],
+                              )
                             : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                                onPressed: (){
-                                  setState(() {
-                                    _isCommenting = !_isCommenting;
-                                  });
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _isCommenting = !_isCommenting;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      Icons.add_comment,
+                                      color: Colors.black,
+                                      size: 40,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        showComment = true;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      Icons.arrow_drop_down_circle,
+                                      color: Colors.black,
+                                      size: 40,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                      ),
+                      showComment == false
+                          ? Container()
+                          : Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: FutureBuilder<DocumentSnapshot>(
+                                future: FirebaseFirestore.instance
+                                    .collection('jobs')
+                                    .doc(widget.jobID)
+                                    .get(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return Center(
+                                        child: CircularProgressIndicator());
+                                  } else {
+                                    if (snapshot.data == null) {
+                                      Center(
+                                          child:
+                                              Text('No Comment for this job'));
+                                    }
+                                  }
+                                  return ListView.separated(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemBuilder: (context, index) {
+                                        return CommentWidget(
+                                            commentId:
+                                                snapshot.data!['jobComments']
+                                                    [index]['commentId'],
+                                            commenterId:
+                                                snapshot.data!['jobComments']
+                                                    [index]['userId'],
+                                            commenterName:
+                                                snapshot.data!['jobComments']
+                                                    [index]['name'],
+                                            commentBody:
+                                                snapshot.data!['jobComments']
+                                                    [index]['commentBody'],
+                                            commenterImageUrl:
+                                                snapshot.data!['jobComments']
+                                                    [index]['userImageUrl']);
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return Divider(
+                                          thickness: 1,
+                                          color: Colors.grey,
+                                        );
+                                      },
+                                      itemCount:
+                                          snapshot.data!['jobComments'].length);
                                 },
-                                icon: Icon(
-                                  Icons.add_comment,
-                                  color: Colors.blueAccent,
-                                  size: 40,
-                                ),
-                            ),
-                            SizedBox(width: 10,),
-                            IconButton(
-                              onPressed: (){
-                                setState(() {
-                                  showComment = true;
-                                });
-                              },
-                              icon: Icon(
-                                Icons.arrow_drop_down_circle,
-                                color: Colors.blueAccent,
-                                size: 40,
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      showComment == false ? Container() :
-                          Padding(
-                              padding: const EdgeInsets.all(16.0),
-                            child: FutureBuilder<DocumentSnapshot>(
-                              future: FirebaseFirestore.instance
-                              .collection('jobs')
-                              .doc(widget.jobID)
-                              .get(),
-                              builder: (context, snapshot){
-                                if(snapshot.connectionState == ConnectionState.waiting){
-                                  return Center(child: CircularProgressIndicator());
-                                }else{
-                                  if(snapshot.data == null){
-                                    Center(child: Text('No Comment for this job'));
-                                  }
-                                }
-                                return ListView.separated(
-                                  shrinkWrap: true,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemBuilder: (context, index){
-                                    return CommentWidget(
-                                        commentId: snapshot.data!['jobComments'] [index]['commentId'],
-                                        commenterId: snapshot.data!['jobComments'] [index]['userId'],
-                                        commenterName: snapshot.data!['jobComments'] [index]['name'],
-                                        commentBody: snapshot.data!['jobComments'] [index]['commentBody'],
-                                        commenterImageUrl: snapshot.data!['jobComments'] [index]['userImageUrl']
-                                    );
-                                    },
-                                    separatorBuilder: (context,index){
-                                    return Divider(
-                                      thickness: 1,
-                                      color: Colors.grey,
-                                    );
-                                    },
-                                    itemCount: snapshot.data!['jobComments'].length
-                                );
-                              },
-                            ),
-                          ),
                     ],
                   ),
                 ),
               ),
             ),
-
           ],
         ),
       ),
     );
   }
 
-  Widget dividerWidget(){
+  Widget dividerWidget() {
     return Column(
       children: [
         SizedBox(

@@ -169,7 +169,7 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                                 borderRadius: BorderRadius.circular(16),
                                 child: imageFile == null
                                     ? Icon(Icons.camera_enhance,
-                                        color: Colors.blue, size: 30)
+                                        color: Color(0xff044404), size: 30)
                                     : Image.file(imageFile!, fit: BoxFit.fill),
                               ),
                             ),
@@ -267,7 +267,7 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                                 _obscureText
                                     ? Icons.visibility
                                     : Icons.visibility_off,
-                                color: Colors.white,
+                                color: Color(0xff044404),
                               ),
                             ),
                             hintText: 'Password',
@@ -360,7 +360,7 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                               )
                             : MaterialButton(
                                 onPressed: _submitFormOnSignUp,
-                                color: Colors.blue,
+                                color: Color(0xff044404),
                                 elevation: 8,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(13)),
@@ -429,6 +429,7 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
         context: context,
         builder: (context) {
           return AlertDialog(
+            backgroundColor: Colors.white,
             title: Text('Please choose an option'),
             content: Column(
               mainAxisSize: MainAxisSize.min,
@@ -443,12 +444,12 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                         padding: const EdgeInsets.all(4.0),
                         child: Icon(
                           Icons.camera,
-                          color: Colors.purple,
+                          color: Color(0xff044404),
                         ),
                       ),
                       Text(
                         'Camera',
-                        style: TextStyle(color: Colors.purple),
+                        style: TextStyle(color: Color(0xff044404)),
                       ),
                     ],
                   ),
@@ -463,12 +464,12 @@ class _SignUpState extends State<SignUp> with TickerProviderStateMixin {
                         padding: const EdgeInsets.all(4.0),
                         child: Icon(
                           Icons.image,
-                          color: Colors.purple,
+                          color: Color(0xff044404),
                         ),
                       ),
                       Text(
                         'Gallery',
-                        style: TextStyle(color: Colors.purple),
+                        style: TextStyle(color: Color(0xff044404)),
                       ),
                     ],
                   ),

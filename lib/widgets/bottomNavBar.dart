@@ -47,7 +47,8 @@ class BottomNavigationBarForApp extends StatelessWidget {
                 },
                 child: Text(
                   'No',
-                  style: TextStyle(color: Colors.green, fontSize: 18),
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 209, 57, 46), fontSize: 18),
                 ),
               ),
               TextButton(
@@ -59,7 +60,7 @@ class BottomNavigationBarForApp extends StatelessWidget {
                 },
                 child: Text(
                   'Yes',
-                  style: TextStyle(color: Colors.red, fontSize: 18),
+                  style: TextStyle(color: Color(0xff044404), fontSize: 18),
                 ),
               ),
             ],
