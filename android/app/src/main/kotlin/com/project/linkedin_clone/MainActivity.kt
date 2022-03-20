@@ -1,4 +1,4 @@
-package com.project.linkedin_clone
+package com.project.post_job_application
 
 import io.flutter.embedding.android.FlutterActivity
 

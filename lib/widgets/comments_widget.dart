@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/search/profile_company.dart';
+import 'package:post_job_application/search/profile_company.dart';
 
 class CommentWidget extends StatefulWidget {
   final String commentId;

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.project.linkedin_clone">
+    package="com.project.post_job_application">
    <application
-        android:label="linkedin_clone"
+        android:label="post_job_application"
         android:icon="@mipmap/ic_launcher">
        <activity
            android:name="com.yalantis.ucrop.UCropActivity"

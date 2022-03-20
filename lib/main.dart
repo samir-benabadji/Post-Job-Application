@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/auth/register.dart';
-import 'package:linkedin_clone/user_state.dart';
+import 'package:post_job_application/auth/register.dart';
+import 'package:post_job_application/user_state.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           }
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'LinkedIn Clone',
+            title: 'Post Job Application',
             theme: ThemeData(
               scaffoldBackgroundColor: Colors.black,
               primarySwatch: Colors.blue,

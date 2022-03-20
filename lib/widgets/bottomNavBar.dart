@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/jobs/jobs_screen.dart';
-import 'package:linkedin_clone/jobs/upload_job.dart';
-import 'package:linkedin_clone/search/profile_company.dart';
-import 'package:linkedin_clone/search/search_companies.dart';
-import 'package:linkedin_clone/user_state.dart';
+import 'package:post_job_application/jobs/jobs_screen.dart';
+import 'package:post_job_application/jobs/upload_job.dart';
+import 'package:post_job_application/search/profile_company.dart';
+import 'package:post_job_application/search/search_companies.dart';
+import 'package:post_job_application/user_state.dart';
 
 class BottomNavigationBarForApp extends StatelessWidget {
   int indexNum = 0;

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/jobs/upload_job.dart';
+import 'package:post_job_application/jobs/upload_job.dart';
 
 import 'auth/login.dart';
 import 'jobs/jobs_screen.dart';

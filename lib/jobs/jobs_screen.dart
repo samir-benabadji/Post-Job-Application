@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/persistent/persistent.dart';
-import 'package:linkedin_clone/search/search_job.dart';
-import 'package:linkedin_clone/services/global_variables.dart';
-import 'package:linkedin_clone/widgets/bottomNavBar.dart';
-import 'package:linkedin_clone/widgets/job_widget.dart';
+import 'package:post_job_application/persistent/persistent.dart';
+import 'package:post_job_application/search/search_job.dart';
+import 'package:post_job_application/services/global_variables.dart';
+import 'package:post_job_application/widgets/bottomNavBar.dart';
+import 'package:post_job_application/widgets/job_widget.dart';
 
 class JobScreen extends StatefulWidget {
   const JobScreen({Key? key}) : super(key: key);

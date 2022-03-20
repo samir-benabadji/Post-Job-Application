@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/auth/forget_pass.dart';
-import 'package:linkedin_clone/auth/register.dart';
-import 'package:linkedin_clone/services/global_methods.dart';
-import 'package:linkedin_clone/services/global_variables.dart';
+import 'package:post_job_application/auth/forget_pass.dart';
+import 'package:post_job_application/auth/register.dart';
+import 'package:post_job_application/services/global_methods.dart';
+import 'package:post_job_application/services/global_variables.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -197,7 +197,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                                           ForgetPasswordScreen()));
                             },
                             child: Text(
-                              'Forget password?',
+                              'Forgot password?',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 17,
