@@ -108,12 +108,8 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 80),
               child: ListView(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 80.0,
-                      right: 80,
-                    ),
-                    child: Image.asset("assets/images/signup.png"),
+                  SizedBox(
+                    height: 150,
                   ),
                   Form(
                     key: _loginFormKey,
